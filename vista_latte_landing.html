@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vista Latte | Café, pan y buena vista en Jilotzingo</title>
+  <meta name="description" content="Vista Latte: cafetería en San Luis Ayucan, Jilotzingo. Café, frappes, pan recién horneado y una vista perfecta para relajarte." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --espresso:#2b1b13;
+      --coffee:#5d3928;
+      --latte:#f7eadb;
+      --cream:#fff8ee;
+      --foam:#fffdf8;
+      --caramel:#c78445;
+      --sage:#768160;
+      --forest:#253424;
+      --muted:#75685e;
+      --shadow:0 24px 70px rgba(43,27,19,.18);
+      --radius:28px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--cream);color:var(--espresso);overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 15% 10%,rgba(199,132,69,.18),transparent 30%),radial-gradient(circle at 85% 20%,rgba(118,129,96,.20),transparent 28%),radial-gradient(circle at 55% 90%,rgba(93,57,40,.13),transparent 32%);pointer-events:none;z-index:-2}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 36px));margin-inline:auto}
+    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(93,57,40,.16);background:rgba(255,253,248,.78);backdrop-filter:blur(14px);border-radius:999px;padding:9px 14px;color:var(--coffee);font-weight:700;font-size:13px;box-shadow:0 12px 30px rgba(43,27,19,.06)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:none;border-radius:999px;padding:14px 20px;font-weight:800;cursor:pointer;transition:.25s ease;white-space:nowrap}
+    .btn.primary{background:var(--espresso);color:var(--foam);box-shadow:0 16px 38px rgba(43,27,19,.28)}
+    .btn.primary:hover{transform:translateY(-2px);box-shadow:0 20px 46px rgba(43,27,19,.34)}
+    .btn.secondary{background:rgba(255,253,248,.72);color:var(--espresso);border:1px solid rgba(93,57,40,.16)}
+    .btn.secondary:hover{background:#fff;transform:translateY(-2px)}
+    .topbar{position:sticky;top:0;z-index:100;background:rgba(255,248,238,.76);backdrop-filter:blur(20px);border-bottom:1px solid rgba(93,57,40,.10)}
+    nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.04em}
+    .brand-mark{width:46px;height:46px;border-radius:16px;background:linear-gradient(145deg,var(--espresso),var(--coffee));display:grid;place-items:center;color:var(--latte);box-shadow:0 12px 30px rgba(43,27,19,.22);font-family:Playfair Display,serif;font-size:23px}
+    .navlinks{display:flex;align-items:center;gap:24px;color:var(--muted);font-weight:700;font-size:14px}
+    .navlinks a:hover{color:var(--espresso)}
+    .mobile-toggle{display:none;border:0;background:transparent;font-size:26px;color:var(--espresso)}
+    .hero{padding:62px 0 36px;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:42px;align-items:center}
+    .eyebrow{margin-bottom:18px}
+    h1{font-family:Playfair Display,serif;font-size:clamp(48px,7vw,88px);line-height:.95;letter-spacing:-.055em;color:var(--espresso);max-width:820px}
+    .lead{font-size:clamp(17px,2vw,21px);line-height:1.72;color:var(--muted);max-width:650px;margin:24px 0 30px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px;max-width:650px}
+    .stat{background:rgba(255,253,248,.72);border:1px solid rgba(93,57,40,.13);border-radius:22px;padding:18px;box-shadow:0 14px 40px rgba(43,27,19,.06)}
+    .stat strong{display:block;font-size:23px;color:var(--espresso);letter-spacing:-.04em}.stat span{font-size:13px;color:var(--muted);font-weight:700}
+    .hero-card{position:relative;border-radius:36px;padding:16px;background:linear-gradient(145deg,rgba(255,253,248,.72),rgba(247,234,219,.82));box-shadow:var(--shadow);border:1px solid rgba(93,57,40,.14);min-height:650px;overflow:hidden}
+    .hero-photo{position:absolute;inset:16px;border-radius:28px;background:linear-gradient(180deg,rgba(43,27,19,.10),rgba(43,27,19,.60)),url('https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=1400&q=80') center/cover;overflow:hidden}
+    .hero-photo::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 25% 18%,rgba(255,248,238,.35),transparent 28%),linear-gradient(135deg,rgba(37,52,36,.12),rgba(43,27,19,.36))}
+    .floating-menu{position:absolute;left:34px;right:34px;bottom:34px;background:rgba(255,253,248,.90);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.55);border-radius:28px;padding:20px;box-shadow:0 20px 60px rgba(43,27,19,.25)}
+    .floating-menu h3{font-family:Playfair Display,serif;font-size:29px;letter-spacing:-.04em}.floating-menu p{color:var(--muted);line-height:1.55;margin:8px 0 16px}.mini-list{display:grid;gap:10px}.mini-item{display:flex;justify-content:space-between;gap:12px;padding:12px;border-radius:16px;background:rgba(247,234,219,.7);font-weight:800}.mini-item span{color:var(--muted);font-weight:700}.badge-open{position:absolute;top:34px;right:34px;background:rgba(37,52,36,.88);color:#fff;border-radius:999px;padding:12px 16px;font-weight:900;z-index:2;box-shadow:0 14px 34px rgba(0,0,0,.22)}
+    section{padding:88px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:34px}.section-head h2{font-family:Playfair Display,serif;font-size:clamp(36px,5vw,60px);line-height:1;letter-spacing:-.05em}.section-head p{max-width:520px;color:var(--muted);line-height:1.65;font-size:16px}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.about-card{border-radius:var(--radius);background:rgba(255,253,248,.72);border:1px solid rgba(93,57,40,.12);padding:30px;box-shadow:0 18px 50px rgba(43,27,19,.07)}.about-card.dark{background:linear-gradient(145deg,var(--forest),#182216);color:#fff;position:relative;overflow:hidden}.about-card.dark::after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(199,132,69,.22);right:-100px;top:-110px}.about-card h3{font-family:Playfair Display,serif;font-size:34px;letter-spacing:-.04em;margin-bottom:12px}.about-card p{line-height:1.75;color:var(--muted)}.about-card.dark p{color:rgba(255,255,255,.72)}.feature-list{display:grid;gap:12px;margin-top:22px}.feature{display:flex;gap:12px;align-items:flex-start;font-weight:700}.feature .dot{width:10px;height:10px;border-radius:50%;background:var(--caramel);margin-top:7px;flex:0 0 auto}
+    .menu-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}.tab{border:1px solid rgba(93,57,40,.14);background:rgba(255,253,248,.75);border-radius:999px;padding:11px 16px;font-weight:900;color:var(--coffee);cursor:pointer;transition:.2s}.tab.active,.tab:hover{background:var(--espresso);color:#fff}.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.menu-card{background:rgba(255,253,248,.82);border:1px solid rgba(93,57,40,.12);border-radius:26px;padding:24px;box-shadow:0 18px 48px rgba(43,27,19,.07);min-height:190px;display:flex;flex-direction:column;justify-content:space-between;transition:.25s ease}.menu-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(43,27,19,.12)}.menu-card .top{display:flex;justify-content:space-between;gap:12px;align-items:start}.menu-card h3{font-size:21px;letter-spacing:-.04em}.price{font-weight:900;color:var(--caramel);font-size:18px;white-space:nowrap}.menu-card p{color:var(--muted);line-height:1.58;margin:12px 0 16px}.menu-tag{display:inline-flex;align-self:flex-start;background:rgba(118,129,96,.13);color:var(--forest);border-radius:999px;padding:8px 11px;font-size:12px;font-weight:900}
+    .experience{background:linear-gradient(145deg,var(--espresso),#160f0b);color:#fff;position:relative;overflow:hidden}.experience::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 18% 20%,rgba(199,132,69,.26),transparent 35%),radial-gradient(circle at 88% 70%,rgba(118,129,96,.20),transparent 30%)}.experience .container{position:relative}.experience .section-head p{color:rgba(255,255,255,.68)}.experience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.exp-card{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);border-radius:28px;padding:26px;min-height:250px;backdrop-filter:blur(14px)}.exp-card .icon{font-size:34px;margin-bottom:34px}.exp-card h3{font-size:22px;margin-bottom:12px;letter-spacing:-.04em}.exp-card p{line-height:1.7;color:rgba(255,255,255,.70)}
+    .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.review{background:rgba(255,253,248,.82);border:1px solid rgba(93,57,40,.12);border-radius:28px;padding:26px;box-shadow:0 18px 48px rgba(43,27,19,.07)}.stars{letter-spacing:2px;color:var(--caramel);font-weight:900;margin-bottom:14px}.review p{color:var(--muted);line-height:1.68}.review strong{display:block;margin-top:18px}
+    .visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px;align-items:stretch}.visit-card{background:rgba(255,253,248,.84);border:1px solid rgba(93,57,40,.12);border-radius:var(--radius);padding:30px;box-shadow:0 18px 48px rgba(43,27,19,.07)}.visit-card h3{font-family:Playfair Display,serif;font-size:38px;letter-spacing:-.04em;margin-bottom:16px}.info-row{display:flex;gap:14px;padding:17px 0;border-bottom:1px solid rgba(93,57,40,.10)}.info-row:last-child{border-bottom:0}.info-row b{display:block;margin-bottom:5px}.info-row span{color:var(--muted);line-height:1.55}.map{min-height:470px;border:0;width:100%;height:100%;border-radius:var(--radius);box-shadow:var(--shadow);filter:saturate(.9) contrast(1.02)}
+    .cta{padding:42px 0 92px}.cta-box{border-radius:36px;background:linear-gradient(135deg,var(--sage),var(--forest));padding:42px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:30px;box-shadow:var(--shadow);overflow:hidden;position:relative}.cta-box::after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;background:rgba(255,255,255,.12);right:-120px;top:-140px}.cta-box h2{font-family:Playfair Display,serif;font-size:clamp(34px,5vw,56px);letter-spacing:-.05em;position:relative}.cta-box p{color:rgba(255,255,255,.76);line-height:1.65;margin-top:10px;max-width:560px;position:relative}.cta-box .btn{position:relative;background:#fff;color:var(--forest)}
+    footer{padding:32px 0;border-top:1px solid rgba(93,57,40,.10);color:var(--muted);font-size:14px}.footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-grid b{color:var(--espresso)}
+    .reveal{opacity:0;transform:translateY(20px);transition:.7s ease}.reveal.visible{opacity:1;transform:none}
+    @media(max-width:980px){.hero-grid,.about-grid,.visit-grid{grid-template-columns:1fr}.hero-card{min-height:560px}.menu-grid,.experience-grid,.reviews-grid{grid-template-columns:repeat(2,1fr)}.section-head{display:block}.section-head p{margin-top:14px}.cta-box{display:block}.cta-box .btn{margin-top:22px}.navlinks{display:none}.mobile-toggle{display:block}.navlinks.open{position:absolute;display:flex;flex-direction:column;top:78px;left:18px;right:18px;background:#fff;border:1px solid rgba(93,57,40,.12);border-radius:24px;padding:22px;box-shadow:var(--shadow);align-items:flex-start}}
+    @media(max-width:680px){.container{width:min(100% - 26px,var(--max))}.hero{padding-top:34px}.hero-card{min-height:510px}.floating-menu{left:24px;right:24px;bottom:24px}.badge-open{top:26px;right:26px}.stats,.menu-grid,.experience-grid,.reviews-grid{grid-template-columns:1fr}section{padding:64px 0}.btn{width:100%}.hero-actions{width:100%}.about-card,.visit-card,.cta-box{padding:24px;border-radius:24px}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="container">
+      <a href="#inicio" class="brand" aria-label="Vista Latte inicio">
+        <span class="brand-mark">VL</span>
+        <span>Vista Latte</span>
+      </a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">☰</button>
+      <div class="navlinks" id="navlinks">
+        <a href="#carta">Carta</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#resenas">Reseñas</a>
+        <a href="#visitanos">Visítanos</a>
+        <a href="https://www.instagram.com/vista_latte/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow pill">☕ Café, pan y buena vista en Jilotzingo</div>
+          <h1>Tu pausa favorita del día.</h1>
+          <p class="lead">Vista Latte es el spot ideal para disfrutar un café bien preparado, pan recién horneado y una vista tranquila en San Luis Ayucan. Ven por tu bebida favorita, quédate por el ambiente.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#carta">Ver carta</a>
+            <a class="btn secondary" href="https://maps.app.goo.gl/448EVsKoMK3hMdcv5" target="_blank" rel="noopener">Cómo llegar</a>
+          </div>
+          <div class="stats">
+            <div class="stat"><strong>4.9 ★</strong><span>calificación en Google</span></div>
+            <div class="stat"><strong>$100-200</strong><span>por persona</span></div>
+            <div class="stat"><strong>8:00 p.m.</strong><span>cierre diario</span></div>
+          </div>
+        </div>
+        <div class="hero-card reveal">
+          <div class="hero-photo"></div>
+          <div class="badge-open">Abierto hoy</div>
+          <div class="floating-menu">
+            <h3>Favoritos de la casa</h3>
+            <p>Bebidas cremosas, frappes de temporada y pan para acompañar la vista.</p>
+            <div class="mini-list">
+              <div class="mini-item">Flat White <span>2 shots + leche</span></div>
+              <div class="mini-item">Frappe de Lotus <span>$79</span></div>
+              <div class="mini-item">Pan recién horneado <span>diario</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <div class="container about-grid">
+        <article class="about-card reveal">
+          <span class="pill">Desde marzo de 2026</span>
+          <h3>Un nuevo spot para San Luis Ayucan.</h3>
+          <p>Vista Latte nació como un espacio para hacer una pausa: café, pan, recetas frescas y un ambiente cálido para platicar, trabajar un rato o pasar por algo rico para llevar.</p>
+          <div class="feature-list">
+            <div class="feature"><span class="dot"></span><span>Consumo en el lugar</span></div>
+            <div class="feature"><span class="dot"></span><span>Para llevar</span></div>
+            <div class="feature"><span class="dot"></span><span>Ambiente con vista y buena atención</span></div>
+          </div>
+        </article>
+        <article class="about-card dark reveal">
+          <span class="pill">📍 Barrio de Ensido</span>
+          <h3>Una cafetería con vista, sabor y calma.</h3>
+          <p>Perfecta para quienes buscan café de especialidad, frappes, pan y un lugar bonito cerca de Jilotzingo. El tipo de lugar que se vuelve parada obligada.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="carta">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="pill">Carta destacada</span>
+            <h2>Elige tu antojo.</h2>
+          </div>
+          <p>Esta sección integra los productos visibles públicamente en Google/Instagram y deja la estructura lista para agregar la carta completa con precios oficiales.</p>
+        </div>
+
+        <div class="menu-tabs" role="tablist" aria-label="Filtrar carta">
+          <button class="tab active" data-filter="all">Todo</button>
+          <button class="tab" data-filter="cafe">Café</button>
+          <button class="tab" data-filter="frappe">Frappes y frías</button>
+          <button class="tab" data-filter="pan">Panadería</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+          <article class="menu-card reveal" data-category="cafe">
+            <div><div class="top"><h3>Flat White</h3><span class="price">Carta</span></div><p>Taza mediana con 2 shots de café y leche. Suave, cremoso y con sabor intenso.</p></div><span class="menu-tag">Café caliente</span>
+          </article>
+          <article class="menu-card reveal" data-category="cafe">
+            <div><div class="top"><h3>Caramel Latte</h3><span class="price">Consultar</span></div><p>Latte cremoso con toque de caramelo, ideal para quienes prefieren un perfil dulce.</p></div><span class="menu-tag">Latte especial</span>
+          </article>
+          <article class="menu-card reveal" data-category="cafe">
+            <div><div class="top"><h3>Kinder Latte</h3><span class="price">Consultar</span></div><p>Bebida dulce y cremosa inspirada en chocolate Kinder.</p></div><span class="menu-tag">Especialidad</span>
+          </article>
+          <article class="menu-card reveal" data-category="cafe">
+            <div><div class="top"><h3>NuteLatte</h3><span class="price">Consultar</span></div><p>Latte con sabor a avellana y chocolate, pensado para un antojo más indulgente.</p></div><span class="menu-tag">Especialidad</span>
+          </article>
+          <article class="menu-card reveal" data-category="frappe">
+            <div><div class="top"><h3>Frappe de Lotus</h3><span class="price">$79</span></div><p>Cremoso, dulce y con el sabor característico de la galleta Lotus.</p></div><span class="menu-tag">Temporada</span>
+          </article>
+          <article class="menu-card reveal" data-category="frappe">
+            <div><div class="top"><h3>Latte Tricolor</h3><span class="price">Consultar</span></div><p>Matcha, leche y fresa en una bebida fresca con inspiración tricolor.</p></div><span class="menu-tag">Bebida fría</span>
+          </article>
+          <article class="menu-card reveal" data-category="frappe">
+            <div><div class="top"><h3>Frappes</h3><span class="price">Consultar</span></div><p>Opciones frías y cremosas para acompañar una tarde con amigos.</p></div><span class="menu-tag">Frío</span>
+          </article>
+          <article class="menu-card reveal" data-category="pan">
+            <div><div class="top"><h3>Pan recién horneado</h3><span class="price">Diario</span></div><p>Pan dulce y piezas del día para acompañar café, latte o frappe.</p></div><span class="menu-tag">Panadería</span>
+          </article>
+          <article class="menu-card reveal" data-category="pan">
+            <div><div class="top"><h3>Croissant jamón y queso</h3><span class="price">Consultar</span></div><p>Opción salada para desayuno, brunch o una pausa rápida.</p></div><span class="menu-tag">Salado</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience" id="experiencia">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="pill">La experiencia</span><h2>Más que café.</h2></div>
+          <p>Una página pensada para vender la experiencia completa: el producto, la vista, el ambiente y la facilidad para llegar.</p>
+        </div>
+        <div class="experience-grid">
+          <article class="exp-card reveal"><div class="icon">🌄</div><h3>Vista bonita</h3><p>Un lugar perfecto para despejarse, platicar y disfrutar el paisaje de San Luis Ayucan.</p></article>
+          <article class="exp-card reveal"><div class="icon">🥐</div><h3>Pan y café</h3><p>La combinación clásica: bebidas calientes, frappes y pan recién horneado para cualquier momento del día.</p></article>
+          <article class="exp-card reveal"><div class="icon">🛍️</div><h3>Para llevar</h3><p>Ideal para pasar por tu bebida favorita antes del trabajo, camino a casa o durante una escapada de fin de semana.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="resenas">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="pill">Reseñas</span><h2>Lo que dicen los clientes.</h2></div>
+          <p>Fragmentos inspirados en comentarios visibles en Google Maps.</p>
+        </div>
+        <div class="reviews-grid">
+          <article class="review reveal"><div class="stars">★★★★★</div><p>“Ingredientes muy frescos, recetas deliciosas y servicio de 100.”</p><strong>Cliente de Google</strong></article>
+          <article class="review reveal"><div class="stars">★★★★★</div><p>“Muy buen lugar, con buena comida y unas vistas muy bonitas.”</p><strong>Cliente de Google</strong></article>
+          <article class="review reveal"><div class="stars">★★★★★</div><p>“Bonita vista, menú variado y buenos precios. Todo delicioso.”</p><strong>Cliente de Google</strong></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="visitanos">
+      <div class="container visit-grid">
+        <article class="visit-card reveal">
+          <span class="pill">Visítanos</span>
+          <h3>Vista Latte</h3>
+          <div class="info-row"><span>📍</span><div><b>Dirección</b><span>Carretera Naucalpan Ixtlahuaca 266, Barrio de Ensido, 54570 San Luis Ayucan, Méx.</span></div></div>
+          <div class="info-row"><span>🕖</span><div><b>Horario</b><span>Lunes a viernes: 7:00 a.m. – 8:00 p.m.<br>Sábado y domingo: 8:00 a.m. – 8:00 p.m.</span></div></div>
+          <div class="info-row"><span>💸</span><div><b>Precio estimado</b><span>$100 – $200 por persona</span></div></div>
+          <div class="info-row"><span>📸</span><div><b>Instagram</b><span>@vista_latte</span></div></div>
+          <div class="hero-actions" style="margin-top:24px">
+            <a class="btn primary" href="https://maps.app.goo.gl/448EVsKoMK3hMdcv5" target="_blank" rel="noopener">Abrir en Maps</a>
+            <a class="btn secondary" href="https://www.instagram.com/vista_latte/" target="_blank" rel="noopener">Ver Instagram</a>
+          </div>
+        </article>
+        <iframe class="map reveal" title="Mapa de Vista Latte" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Vista%20Latte%2C%20Carretera%20Naucalpan%20Ixtlahuaca%20266%2C%20San%20Luis%20Ayucan%2C%20M%C3%A9x.&output=embed"></iframe>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-box reveal">
+        <div>
+          <h2>Ven por tu café favorito.</h2>
+          <p>Haz una pausa, disfruta la vista y acompaña tu bebida con pan recién horneado.</p>
+        </div>
+        <a class="btn" href="https://maps.app.goo.gl/448EVsKoMK3hMdcv5" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <p><b>Vista Latte</b> — Café, pan y buena vista.</p>
+      <p>Landing demo creada para propuesta comercial. Reemplazar imágenes por fotos oficiales.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('mobileToggle');
+    const navlinks = document.getElementById('navlinks');
+    toggle.addEventListener('click', () => navlinks.classList.toggle('open'));
+    document.querySelectorAll('.navlinks a').forEach(a => a.addEventListener('click', () => navlinks.classList.remove('open')));
+
+    const tabs = document.querySelectorAll('.tab');
+    const cards = document.querySelectorAll('.menu-card');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+        cards.forEach(card => {
+          const show = filter === 'all' || card.dataset.category === filter;
+          card.style.display = show ? 'flex' : 'none';
+        });
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
